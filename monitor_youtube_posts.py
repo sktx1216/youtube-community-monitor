@@ -36,7 +36,6 @@ def get_recent_posts():
         page.wait_for_timeout(5000)
 
         posts = page.locator("ytd-backstage-post-thread-renderer")
-
         count = min(posts.count(), MAX_POSTS)
 
         if count == 0:
@@ -99,3 +98,56 @@ def send_discord(matched_posts):
 
 ```text
 {post_text}
+```
+"""
+
+        for chunk in split_discord_message(message):
+            response = requests.post(
+                webhook_url,
+                json={"content": chunk},
+                timeout=30,
+            )
+            response.raise_for_status()
+
+
+def main():
+    recent_posts = get_recent_posts()
+    seen_post_ids = load_seen_post_ids()
+
+    if not seen_post_ids:
+        print("첫 실행입니다. 최근 게시물을 저장만 합니다.")
+        save_seen_post_ids([post["id"] for post in recent_posts])
+        return
+
+    new_posts = [
+        post for post in recent_posts
+        if post["id"] not in seen_post_ids
+    ]
+
+    if not new_posts:
+        print("새 게시물 없음")
+        save_seen_post_ids([post["id"] for post in recent_posts])
+        return
+
+    print(f"새 게시물 {len(new_posts)}건 감지")
+
+    matched_posts = []
+
+    for post in new_posts:
+        found_keywords = find_keywords(post["text"])
+
+        if found_keywords:
+            post["keywords"] = found_keywords
+            matched_posts.append(post)
+
+    if matched_posts:
+        print(f"키워드 포함 게시물 {len(matched_posts)}건 감지")
+        send_discord(matched_posts)
+    else:
+        print("새 게시물은 있으나 키워드 포함 게시물 없음")
+
+    save_seen_post_ids([post["id"] for post in recent_posts])
+
+
+if __name__ == "__main__":
+    main()
