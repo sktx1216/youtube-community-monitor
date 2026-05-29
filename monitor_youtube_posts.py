@@ -1,10 +1,9 @@
 import hashlib
 import json
 import os
-import smtplib
-from email.mime.text import MIMEText
 from pathlib import Path
 
+import requests
 from playwright.sync_api import sync_playwright
 
 URL = "https://www.youtube.com/@흐구구구/posts"
@@ -13,7 +12,7 @@ STATE_FILE = Path("seen_posts.json")
 
 KEYWORDS = ["스타레일", "원신"]
 
-MAX_POSTS = 20
+MAX_POSTS = 10
 
 
 def make_post_id(text):
@@ -30,7 +29,7 @@ def get_recent_posts():
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/120.0.0.0 Safari/537.36"
-            )
+            ),
         )
 
         page.goto(URL, wait_until="networkidle", timeout=60000)
@@ -52,7 +51,7 @@ def get_recent_posts():
             if text:
                 result.append({
                     "id": make_post_id(text),
-                    "text": text
+                    "text": text,
                 })
 
         browser.close()
@@ -73,7 +72,7 @@ def save_seen_post_ids(post_ids):
             {"seen_post_ids": post_ids},
             f,
             ensure_ascii=False,
-            indent=2
+            indent=2,
         )
 
 
@@ -82,91 +81,21 @@ def find_keywords(text):
     return [kw for kw in KEYWORDS if kw.lower() in lower_text]
 
 
-def highlight_keywords(text, keywords):
-    result = text
-
-    for keyword in keywords:
-        result = result.replace(keyword, f">>> {keyword} <<<")
-
-    return result
+def split_discord_message(text, limit=1800):
+    return [text[i:i + limit] for i in range(0, len(text), limit)]
 
 
-def send_email(matched_posts):
-    gmail_user = os.environ["GMAIL_USER"]
-    gmail_app_password = os.environ["GMAIL_APP_PASSWORD"]
-    to_email = os.environ["TO_EMAIL"]
-
-    subject = f"유튜브 새 게시물 키워드 감지: {len(matched_posts)}건"
-
-    body_parts = ["[유튜브 새 게시물 키워드 감지]\n"]
+def send_discord(matched_posts):
+    webhook_url = os.environ["DISCORD_WEBHOOK_URL"]
 
     for idx, post in enumerate(matched_posts, start=1):
-        keywords = post["keywords"]
-        text = highlight_keywords(post["text"], keywords)
+        keywords = ", ".join(post["keywords"])
+        post_text = post["text"]
 
-        body_parts.append(f"""
-━━━━━━━━━━━━━━━━━━━━
-[{idx}] 감지 키워드: {', '.join(keywords)}
+        message = f"""🚨 **유튜브 새 게시물 키워드 감지**
 
-게시물 내용:
-{text}
-""")
+**감지 키워드:** {keywords}
+**게시물 탭:** {URL}
 
-    body_parts.append(f"""
-
-게시물 탭:
-{URL}
-""")
-
-    body = "\n".join(body_parts)
-
-    msg = MIMEText(body, "plain", "utf-8")
-    msg["Subject"] = subject
-    msg["From"] = gmail_user
-    msg["To"] = to_email
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(gmail_user, gmail_app_password)
-        server.send_message(msg)
-
-
-def main():
-    recent_posts = get_recent_posts()
-    seen_post_ids = load_seen_post_ids()
-
-    if not seen_post_ids:
-        print("첫 실행입니다. 최근 게시물을 저장만 합니다.")
-        save_seen_post_ids([post["id"] for post in recent_posts])
-        return
-
-    new_posts = [
-        post for post in recent_posts
-        if post["id"] not in seen_post_ids
-    ]
-
-    if not new_posts:
-        print("새 게시물 없음")
-        return
-
-    print(f"새 게시물 {len(new_posts)}건 감지")
-
-    matched_posts = []
-
-    for post in new_posts:
-        found_keywords = find_keywords(post["text"])
-
-        if found_keywords:
-            post["keywords"] = found_keywords
-            matched_posts.append(post)
-
-    if matched_posts:
-        print(f"키워드 포함 게시물 {len(matched_posts)}건 감지")
-        send_email(matched_posts)
-    else:
-        print("새 게시물은 있으나 키워드 포함 게시물 없음")
-
-    save_seen_post_ids([post["id"] for post in recent_posts])
-
-
-if __name__ == "__main__":
-    main()
+```text
+{post_text}
