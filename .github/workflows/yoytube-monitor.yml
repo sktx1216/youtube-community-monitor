@@ -3,6 +3,7 @@ name: YouTube Posts Monitor
 on:
   schedule:
     - cron: "0 0 * * *" # 한국시간 오전 9시
+    - cron: "0 6 * * *" # 한국시간 오후 3시
   workflow_dispatch:
 
 permissions:
