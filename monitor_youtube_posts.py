@@ -12,7 +12,7 @@ URL = "https://www.youtube.com/@흐구구구/posts"
 
 STATE_FILE = Path("seen_posts.json")
 
-KEYWORDS = ["스타레일", "원신"]
+KEYWORDS = ["[스타레일]", "[원신]"]
 
 MAX_POSTS = 10
 
