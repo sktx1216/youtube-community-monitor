@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 import re
+from urllib.parse import parse_qs, urlparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -11,6 +12,7 @@ from playwright.sync_api import sync_playwright
 URL = "https://www.youtube.com/@흐구구구/posts"
 
 STATE_FILE = Path("seen_posts.json")
+REDEEM_CODES_FILE = Path("redeem_codes.json")
 
 KEYWORDS = ["[스타레일]", "[원신]"]
 
@@ -335,6 +337,76 @@ def escape_discord_mentions(text):
     return text.replace("@", "@\u200b")
 
 
+def extract_urls(text):
+    return [url.rstrip(").,]>}") for url in re.findall(r"https?://[^\s<]+", text)]
+
+
+def extract_redeem_code(url):
+    query = parse_qs(urlparse(url).query)
+    for key in ("code", "cdkey", "giftCode"):
+        values = query.get(key)
+        if values and values[0]:
+            return values[0]
+    return None
+
+
+def load_redeem_codes():
+    if not REDEEM_CODES_FILE.exists():
+        return {"updated_at": None, "items": []}
+
+    try:
+        with open(REDEEM_CODES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {"updated_at": None, "items": []}
+
+    return {
+        "updated_at": data.get("updated_at"),
+        "items": data.get("items", []),
+    }
+
+
+def save_redeem_codes(matched_posts):
+    data = load_redeem_codes()
+    data["items"] = [item for item in data["items"] if item.get("codes")]
+    existing_ids = {item.get("id") for item in data["items"]}
+
+    for post in matched_posts:
+        if post["id"] in existing_ids:
+            continue
+
+        links = extract_urls(post["text"])
+        codes = list(dict.fromkeys(filter(None, (extract_redeem_code(url) for url in links))))
+        if not codes:
+            continue
+
+        keywords = post.get("keywords", [])
+        game = "원신" if "[원신]" in keywords else "스타레일" if "[스타레일]" in keywords else "기타"
+        data["items"].append({
+            "id": post["id"],
+            "game": game,
+            "codes": codes,
+            "links": links,
+            "post_url": post.get("url"),
+            "text": post["text"],
+            "published_at": post.get("published_at"),
+            "detected_at": datetime.now(timezone.utc).isoformat(),
+            "redeemed": False,
+            "redeemed_at": None,
+        })
+        existing_ids.add(post["id"])
+
+    data["items"].sort(
+        key=lambda item: item.get("published_at") or item.get("detected_at") or "",
+        reverse=True,
+    )
+    data["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+    with open(REDEEM_CODES_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
 def send_discord(matched_posts):
     webhook_url = os.environ["DISCORD_WEBHOOK_URL"]
 
@@ -368,6 +440,17 @@ def send_discord(matched_posts):
 
 def main():
     recent_posts = get_recent_posts()
+    recent_matched_posts = []
+
+    for post in recent_posts:
+        found_keywords = find_keywords(post["text"])
+        if found_keywords:
+            post["keywords"] = found_keywords
+            recent_matched_posts.append(post)
+
+    if recent_matched_posts:
+        save_redeem_codes(recent_matched_posts)
+
     state = load_state()
     latest_seen_at = parse_state_datetime(state["latest_published_at"])
     seen_post_ids = state["seen_post_ids"]
@@ -400,14 +483,8 @@ def main():
 
     print(f"새 게시물 {len(new_posts)}건 감지")
 
-    matched_posts = []
-
-    for post in new_posts:
-        found_keywords = find_keywords(post["text"])
-
-        if found_keywords:
-            post["keywords"] = found_keywords
-            matched_posts.append(post)
+    new_post_ids = {post["id"] for post in new_posts}
+    matched_posts = [post for post in recent_matched_posts if post["id"] in new_post_ids]
 
     if matched_posts:
         print(f"키워드 포함 게시물 {len(matched_posts)}건 감지")
