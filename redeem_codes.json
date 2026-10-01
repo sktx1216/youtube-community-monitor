@@ -1,6 +1,24 @@
 {
-  "updated_at": "2026-10-01T12:49:15.766055+00:00",
+  "updated_at": "2026-10-01T20:14:37.970853+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/Ugkx6Xgl9yKj-XpZE2-IBoB57-QlVbNYr3Ze",
+      "game": "스타레일",
+      "codes": [
+        "RT4BPNA8FBS3",
+        "PearlAppraise"
+      ],
+      "links": [
+        "https://hsr.hoyoverse.com/gift?code=RT4BPNA8FBS3",
+        "https://hsr.hoyoverse.com/gift?code=PearlAppraise"
+      ],
+      "post_url": "https://www.youtube.com/post/Ugkx6Xgl9yKj-XpZE2-IBoB57-QlVbNYr3Ze",
+      "text": "[스타레일] 50성옥 리딤코드\n🔸RT4BPNA8FBS3 https://hsr.hoyoverse.com/gift?code=RT4BPNA8FBS3\n🔹PearlAppraise https://hsr.hoyoverse.com/gift?code=PearlAppraise\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-10-01T17:38:43.931504+00:00",
+      "detected_at": "2026-10-01T20:14:37.970775+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/UgkxrhZJ3XDSNvRXbqkJ8y5cWuu6peQqoLrl",
       "game": "원신",
