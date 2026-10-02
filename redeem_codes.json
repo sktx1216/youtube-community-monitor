@@ -1,6 +1,23 @@
 {
-  "updated_at": "2026-10-02T09:33:01.771267+00:00",
+  "updated_at": "2026-10-02T17:42:05.835113+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxOIk_W42z7QdV-D1kGnYxATn47vyICHfB",
+      "game": "원신",
+      "codes": [
+        "6LS3F3LS5K87"
+      ],
+      "links": [
+        "https://genshin.hoyoverse.com/ko/gift?code=6LS3F3LS5K87",
+        "https://hoyo.link/KN1yT5hPr"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxOIk_W42z7QdV-D1kGnYxATn47vyICHfB",
+      "text": "[원신] 원석과 별바다 수정\n🔸6LS3F3LS5K87 https://genshin.hoyoverse.com/ko/gift?code=6LS3F3LS5K87\n🔸원석 주는 별바다 웹이벤트 https://hoyo.link/KN1yT5hPr\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-10-02T12:22:58.973262+00:00",
+      "detected_at": "2026-10-02T17:42:05.835020+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/Ugkx6Xgl9yKj-XpZE2-IBoB57-QlVbNYr3Ze",
       "game": "스타레일",
