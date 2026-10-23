@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-10-23T11:21:35.544087+00:00",
+  "updated_at": "2026-10-23T16:47:41.344258+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxacnHAVNi-e7-8T7azI3HilTtykycquUq",
+      "game": "원신",
+      "codes": [
+        "HourofRuin",
+        "ExpertMitya",
+        "PhotoTime"
+      ],
+      "links": [
+        "https://genshin.hoyoverse.com/ko/gift?code=HourofRuin",
+        "https://genshin.hoyoverse.com/ko/gift?code=ExpertMitya",
+        "https://genshin.hoyoverse.com/ko/gift?code=PhotoTime"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxacnHAVNi-e7-8T7azI3HilTtykycquUq",
+      "text": "[원신] 7.2 특별방송 300원석 리딤코드 (~10/26 오후1시)\n🔸HourofRuin https://genshin.hoyoverse.com/ko/gift?code=HourofRuin\n🔸ExpertMitya https://genshin.hoyoverse.com/ko/gift?code=ExpertMitya\n🔸PhotoTime https://genshin.hoyoverse.com/ko/gift?code=PhotoTime\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-10-23T12:37:43.027754+00:00",
+      "detected_at": "2026-10-23T16:47:41.344182+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
+    {
+      "id": "https://www.youtube.com/post/UgkxlyN3Wcaq37v8N36GUzFm_XTXY-H5Tmk3",
+      "game": "원신",
+      "codes": [
+        "PJ2KEBRAYSRM"
+      ],
+      "links": [
+        "https://genshin.hoyoverse.com/ko/gift?code=PJ2KEBRAYSRM"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxlyN3Wcaq37v8N36GUzFm_XTXY-H5Tmk3",
+      "text": "[원신] 킁거 60원석 리딤코드 \n🔸PJ2KEBRAYSRM https://genshin.hoyoverse.com/ko/gift?code=PJ2KEBRAYSRM\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-10-23T11:50:47.260293+00:00",
+      "detected_at": "2026-10-23T16:47:41.344219+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/UgkxcVwv7idNMAKHraYq3ogogXiTrhRySsoe",
       "game": "스타레일",
