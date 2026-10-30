@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-10-30T09:46:53.527219+00:00",
+  "updated_at": "2026-10-30T17:53:09.134103+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxAl8Mry46zGPD27LCQ32-a6CROhAcJuoy",
+      "game": "스타레일",
+      "codes": [
+        "NEVERGONNAGIVE",
+        "NEVERGONNAMAKE",
+        "AHABLESSYOU"
+      ],
+      "links": [
+        "https://hsr.hoyoverse.com/gift?code=NEVERGONNAGIVE",
+        "https://hsr.hoyoverse.com/gift?code=NEVERGONNAMAKE",
+        "https://hsr.hoyoverse.com/gift?code=AHABLESSYOU"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxAl8Mry46zGPD27LCQ32-a6CROhAcJuoy",
+      "text": "[스타레일] 300성옥 4.7 특방 무려 에이언즈가 플레이어블 (~11/01 00:59)\n🔸NEVERGONNAGIVE https://hsr.hoyoverse.com/gift?code=NEVERGONNAGIVE\n🔸NEVERGONNAMAKE https://hsr.hoyoverse.com/gift?code=NEVERGONNAMAKE\n🔸AHABLESSYOU https://hsr.hoyoverse.com/gift?code=AHABLESSYOU\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-10-30T13:17:29.713271+00:00",
+      "detected_at": "2026-10-30T17:53:09.134073+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/UgkxacnHAVNi-e7-8T7azI3HilTtykycquUq",
       "game": "원신",
