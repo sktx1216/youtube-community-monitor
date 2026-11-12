@@ -1,6 +1,24 @@
 {
-  "updated_at": "2026-11-12T06:37:16.904664+00:00",
+  "updated_at": "2026-11-12T17:28:19.471983+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxROx1ERMdj3tcx1QFTrAwCaYXzkJUezEE",
+      "game": "스타레일",
+      "codes": [
+        "NS4DU8AAGXBP",
+        "AeonAha"
+      ],
+      "links": [
+        "https://hsr.hoyoverse.com/gift?code=NS4DU8AAGXBP",
+        "https://hsr.hoyoverse.com/gift?code=AeonAha"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxROx1ERMdj3tcx1QFTrAwCaYXzkJUezEE",
+      "text": "[스타레일] 50성옥 리딤코드 냠냠\n🔸NS4DU8AAGXBP https://hsr.hoyoverse.com/gift?code=NS4DU8AAGXBP\n🔸AeonAha https://hsr.hoyoverse.com/gift?code=AeonAha\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-11-12T16:24:38.594288+00:00",
+      "detected_at": "2026-11-12T17:28:19.471889+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/UgkxM6nIF6n0uDBZG3Yk-v7a3HmyazpscgI-",
       "game": "원신",
