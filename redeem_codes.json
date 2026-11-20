@@ -1,6 +1,22 @@
 {
-  "updated_at": "2026-11-20T02:09:28.498707+00:00",
+  "updated_at": "2026-11-20T11:08:39.280630+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxJxqTJWDXBHE2ynAGY9CyRrjsaLIsyJeK",
+      "game": "원신",
+      "codes": [
+        "POYMANSXF877"
+      ],
+      "links": [
+        "https://genshin.hoyoverse.com/ko/gift?code=POYMANSXF877"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxJxqTJWDXBHE2ynAGY9CyRrjsaLIsyJeK",
+      "text": "[원신] 20원석 리딤코드 UGC보나스\n🔸POYMANSXF877 https://genshin.hoyoverse.com/ko/gift?code=POYMANSXF877\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-11-20T06:46:18.085110+00:00",
+      "detected_at": "2026-11-20T11:08:39.280571+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/Ugkx_h9q1GcBS98HOGDRS4upyXvGoD5xuyr6",
       "game": "원신",
