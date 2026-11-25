@@ -1,6 +1,22 @@
 {
-  "updated_at": "2026-11-24T23:49:19.555455+00:00",
+  "updated_at": "2026-11-25T07:49:36.650683+00:00",
   "items": [
+    {
+      "id": "https://www.youtube.com/post/UgkxTRPk14XdBoRM9D3lV5tOBxW4-GP6X63z",
+      "game": "원신",
+      "codes": [
+        "AZHGG7H2ZQZS"
+      ],
+      "links": [
+        "https://genshin.hoyoverse.com/ko/gift?code=AZHGG7H2ZQZS"
+      ],
+      "post_url": "https://www.youtube.com/post/UgkxTRPk14XdBoRM9D3lV5tOBxW4-GP6X63z",
+      "text": "[원신] 그 찌꺼기\n🔹AZHGG7H2ZQZS https://genshin.hoyoverse.com/ko/gift?code=AZHGG7H2ZQZS\n✔원신, 스타레일, 젠레스 리딤코드 이벤트 소식은 흐구구구 채널 구독! - 커뮤니티 탭에서 확인!",
+      "published_at": "2026-11-25T07:14:15.711018+00:00",
+      "detected_at": "2026-11-25T07:49:36.650622+00:00",
+      "redeemed": false,
+      "redeemed_at": null
+    },
     {
       "id": "https://www.youtube.com/post/UgkxJxqTJWDXBHE2ynAGY9CyRrjsaLIsyJeK",
       "game": "원신",
